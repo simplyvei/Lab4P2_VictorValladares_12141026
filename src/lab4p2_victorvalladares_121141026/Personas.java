@@ -53,4 +53,6 @@ public abstract class Personas {
         return "Personas{" + "nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", vida=" + vida + '}';
     }
     
+    public abstract int damage (Personas atacar);
+    
 }
