@@ -33,7 +33,9 @@ public class Herrero extends Personas{
 
     @Override
     public int damage(Personas atacar) {
-        return 0;
+        if (atacar instanceof Agronomo) return (int)Math.round(getAtaque()*1.1);
+        if (atacar instanceof Pacifista) return (int)Math.round(getAtaque()*1.05);
+        return getAtaque();
     }
     
 }

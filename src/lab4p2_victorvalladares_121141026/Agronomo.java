@@ -32,7 +32,9 @@ public class Agronomo extends Personas{
     
     @Override
     public int damage(Personas atacar) {
-        return 0;
+        if (atacar instanceof Pacifista) return (int)Math.round(getAtaque()*1.05);
+        if (atacar instanceof Normales) return (int)Math.round(getAtaque()*1.1);
+        return getAtaque();
     }
     
 }

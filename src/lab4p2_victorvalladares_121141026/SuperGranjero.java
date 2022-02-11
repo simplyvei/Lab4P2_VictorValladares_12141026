@@ -32,7 +32,9 @@ public class SuperGranjero extends Personas{
     
     @Override
     public int damage(Personas atacar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (atacar instanceof Herrero) return (int)Math.round(getAtaque()*1.1);
+        if (atacar instanceof Explosivo) return (int)Math.round(getAtaque()*1.15);
+        return getAtaque();
     }
     
 }
