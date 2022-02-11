@@ -10,8 +10,11 @@ public class Herrero extends Personas{
         super();
     }
 
-    public Herrero(int ataque, String nombre, String apellido, String edad, int vida) {
-        super(nombre, apellido, edad, (int)Math.round(vida * 1.5));
+    public Herrero(String nombre, String apellido, int edad, int vida) {
+        super(nombre, apellido, edad, vida);
+    }
+
+    public Herrero(int ataque) {
         this.ataque = r.nextInt(500)+200;
     }
 

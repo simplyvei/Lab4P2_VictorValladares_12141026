@@ -7,7 +7,7 @@ public class Pacifista extends Personas{
         super();
     }
 
-    public Pacifista(String discurso, String nombre, String apellido, String edad, int vida) {
+    public Pacifista(String discurso, String nombre, String apellido, int edad, int vida) {
         super(nombre, apellido, edad, vida);
         this.discurso = discurso;
     }

@@ -7,10 +7,15 @@ public class Normales extends Personas{
         super();
     }
 
-    public Normales(int ataque, String nombre, String apellido, String edad, int vida) {
+    public Normales(String nombre, String apellido, int edad, int vida) {
         super(nombre, apellido, edad, vida);
+    }
+
+    public Normales(int ataque) {
         this.ataque = 50;
     }
+
+
 
     public int getAtaque() {
         return ataque;

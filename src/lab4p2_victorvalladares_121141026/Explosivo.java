@@ -6,9 +6,12 @@ public class Explosivo extends Personas{
     public Explosivo() {
         super();
     }
-
-    public Explosivo(int ataque, String nombre, String apellido, String edad, int vida) {
+    
+    public Explosivo(String nombre, String apellido, int edad, int vida) {
         super(nombre, apellido, edad, vida);
+    }
+
+    public Explosivo(int ataque) {
         this.ataque = 250;
     }
 

@@ -3,13 +3,13 @@ package lab4p2_victorvalladares_121141026;
 public abstract class Personas {
     private String nombre;
     private String apellido;
-    private String edad;
+    private int edad;
     private int vida;
 
     public Personas() {
     }
 
-    public Personas(String nombre, String apellido, String edad, int vida) {
+    public Personas(String nombre, String apellido, int edad, int vida) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
@@ -32,11 +32,11 @@ public abstract class Personas {
         this.apellido = apellido;
     }
 
-    public String getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    public void setEdad(String edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
 

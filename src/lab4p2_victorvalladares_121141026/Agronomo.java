@@ -7,11 +7,15 @@ public class Agronomo extends Personas{
         super();
     }
 
-    public Agronomo(int ataque, String nombre, String apellido, String edad, int vida) {
+    public Agronomo(String nombre, String apellido, int edad, int vida) {
         super(nombre, apellido, edad, vida);
-        this.ataque = 100;
     }
 
+    public Agronomo(int ataque) {
+        this.ataque = 100;
+    }
+    
+    
     public int getAtaque() {
         return ataque;
     }
