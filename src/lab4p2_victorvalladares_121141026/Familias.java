@@ -31,7 +31,7 @@ public class Familias {
 
     @Override
     public String toString() {
-        return "Familias{" + "apellido=" + apellido + ", familias=" + familias + '}';
+        return "Familias{" + "apellido=" + apellido + ", miembros=" + familias + '}';
     }
     
     

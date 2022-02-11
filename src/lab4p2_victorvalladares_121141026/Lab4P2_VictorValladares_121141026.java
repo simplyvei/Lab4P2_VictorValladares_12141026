@@ -81,7 +81,7 @@ public class Lab4P2_VictorValladares_121141026 {
         }else if (op == 2){
            crearPersona();
         }else if (op == 3){
-           
+           listarFamilias();
         }else if (op == 4){
             
         }
@@ -137,5 +137,14 @@ public class Lab4P2_VictorValladares_121141026 {
                 familias.get(val).getFamilias().add(new Explosivo(nombre, apellido, edad, vida));
             }
         }
+    }
+    public static void listarFamilias(){
+        for (Familias lista : familias){
+            System.out.println(lista.toString());
+            System.out.println("---------------------------------------------");
+        }
+    }
+    public static void pelea(){
+        
     }
 }
