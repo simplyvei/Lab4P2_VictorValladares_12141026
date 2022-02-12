@@ -42,8 +42,8 @@ public class Lab4P2_VictorValladares_121141026 {
     public static void main(String[] args) {
         //Montescos
         familias.add(Montesco);
-        familias.get(0).getFamilias().add(herrero);
         familias.get(0).getFamilias().add(Romeo);
+        familias.get(0).getFamilias().add(herrero);
         familias.get(0).getFamilias().add(agronomo);
         
         
@@ -104,11 +104,14 @@ public class Lab4P2_VictorValladares_121141026 {
         System.out.print("Ingrese el apellido: ");
         String apellido = lea.next();
         int val = -1;
+        int i = 0;
         for(Familias lista : familias){
             if (lista.getApellido().equalsIgnoreCase(apellido)){
-                val = familias.indexOf(apellido);
+                break;
             }
+            i++;
         }
+        val = i;
         if (val == -1){
             System.out.println("NO EXISTE ESE APELLIDO");
         }else{
@@ -148,94 +151,112 @@ public class Lab4P2_VictorValladares_121141026 {
     public static void pelea(){
         if (familias.size() == 1){
             System.out.println("*******************PELEA FINAL**************************");
-            
-            while (!familias.get(0).getFamilias().isEmpty() || familias.get(1).getFamilias().size() == 1){
+             for(int i = 1; i < familias.get(1).getFamilias().size(); i++){
                 
-                int vidaR = familias.get(0).getFamilias().get(0).getVida();
-                int vidaJ = familias.get(1).getFamilias().get(1).getVida();
-                
+
                 while (familias.get(1).getFamilias().get(0).getVida() > 0  && familias.get(0).getFamilias().get(0).getVida() > 0){
-                    
-                    int ataqueRomeo = familias.get(0).getFamilias().get(0).damage(familias.get(1).getFamilias().get(1));
-                    familias.get(1).getFamilias().get(1).setVida(familias.get(1).getFamilias().get(1).getVida() - ataqueRomeo);
-                    System.out.println( familias.get(0).getFamilias().get(0).getNombre() + " ha atacado a " + familias.get(1).getFamilias().get(1).getNombre() + " haciendole " + ataqueRomeo + " dejandolo con " + familias.get(1).getFamilias().get(1).getVida() + " de vida "  ); 
-                    
-                    if (familias.get(1).getFamilias().get(1).getVida() <= 0){
-                        
+
+                    int vidaR = familias.get(0).getFamilias().get(0).getVida();
+                    int vidaC = familias.get(1).getFamilias().get(0).getVida();
+
+                    int ataqueRomeo = familias.get(0).getFamilias().get(0).damage(explosivo);
+                    familias.get(1).getFamilias().get(0).setVida(familias.get(1).getFamilias().get(0).getVida() - ataqueRomeo);
+                    System.out.println( familias.get(0).getFamilias().get(0).getNombre() + " ha atacado a " + familias.get(1).getFamilias().get(0).getNombre() + " haciendole " + ataqueRomeo + " dejandolo con " + familias.get(1).getFamilias().get(0).getVida() + " de vida "  ); 
+
+                    if (familias.get(1).getFamilias().get(0).getVida() <= 0){
+
                         System.out.println("Ha ganado " + familias.get(0).getFamilias().get(0).getNombre());
                         familias.get(0).getFamilias().get(0).setVida(vidaR);
-                        familias.get(1).getFamilias().remove(1);
-                        
+                        familias.get(1).getFamilias().remove(0);
+
                     }else{
-                        
-                        int ataqueContrincante = familias.get(1).getFamilias().get(1).damage(familias.get(0).getFamilias().get(0));
+
+                        int ataqueContrincante = familias.get(1).getFamilias().get(0).damage(herrero);
                         familias.get(0).getFamilias().get(0).setVida(familias.get(0).getFamilias().get(0).getVida() - ataqueContrincante);
-                        System.out.println( familias.get(1).getFamilias().get(1).getNombre() + " ha atacado a " + familias.get(0).getFamilias().get(0).getNombre() + " haciendole " + ataqueContrincante + " dejandolo con " + familias.get(0).getFamilias().get(0).getVida() + " de vida "  ); 
-                        
+                        System.out.println( familias.get(1).getFamilias().get(0).getNombre() + " ha atacado a " + familias.get(0).getFamilias().get(0).getNombre() + " haciendole " + ataqueContrincante + " dejandolo con " + familias.get(0).getFamilias().get(0).getVida() + " de vida "  ); 
+
                         if (familias.get(0).getFamilias().get(0).getVida() <= 0){
-                            System.out.println("Ha ganado " + familias.get(1).getFamilias().get(1).getNombre());
-                            familias.get(1).getFamilias().get(1).setVida(vidaJ);
+
+                            System.out.println("Ha ganado " + familias.get(1).getFamilias().get(0).getNombre());
+                            familias.get(1).getFamilias().get(0).setVida(vidaC);
                             familias.get(0).getFamilias().remove(0);
-                            
                         }
                     }
                 }
             }
+             
             if (familias.get(1).getFamilias().size() == 1){
                 System.out.println("ROMEO RECUPERO A JULIETA, HAS GANADO");
                 System.exit(0);
-            }else if (familias.get(0).getFamilias().isEmpty()){
+            }else if (familias.get(0).getFamilias().get(0).getVida() <= 0){
                 System.out.println("HA PERDIDO EL JUEGO PORQUE ROMEO HA MUERTO");
                 System.exit(0);
             }
-            
+  
         }else{
             System.out.print("Ingrese el nombre de la familia de la que desea pelear: ");
             String contrincante = lea.next();
             int temporal = -1;
+            int i = 0;
             for (Familias lista : familias){
-                if (lista.getApellido().equalsIgnoreCase(contrincante)){
-                    temporal = familias.indexOf(contrincante);
+                if (contrincante.equalsIgnoreCase(lista.getApellido())){
+                    //System.out.println(familias.indexOf(contrincante));
+                    //temporal = familias.indexOf(contrincante);
+                    break;
                 }
+                i++;
             }
-            
+            temporal = i;
             if (temporal == -1){
                 System.out.println("NO EXISTE ESA FAMILIA");
                 System.exit(0);
             }
+            Collections.shuffle(familias.get(temporal).getFamilias());
             
             while (!familias.get(temporal).getFamilias().isEmpty() || !familias.get(0).getFamilias().isEmpty()){
                 
-                int vidaR = familias.get(0).getFamilias().get(0).getVida();
-                int vidaC = familias.get(temporal).getFamilias().get(0).getVida();
-                
+
                 while (familias.get(temporal).getFamilias().get(0).getVida() > 0  && familias.get(0).getFamilias().get(0).getVida() > 0){
-                    
-                    int ataqueRomeo = familias.get(0).getFamilias().get(0).damage(familias.get(temporal).getFamilias().get(0));
+
+                    int vidaR = familias.get(0).getFamilias().get(0).getVida();
+                    int vidaC = familias.get(temporal).getFamilias().get(0).getVida();
+
+                    int ataqueRomeo = familias.get(0).getFamilias().get(0).damage(explosivo);
                     familias.get(temporal).getFamilias().get(0).setVida(familias.get(temporal).getFamilias().get(0).getVida() - ataqueRomeo);
                     System.out.println( familias.get(0).getFamilias().get(0).getNombre() + " ha atacado a " + familias.get(temporal).getFamilias().get(0).getNombre() + " haciendole " + ataqueRomeo + " dejandolo con " + familias.get(temporal).getFamilias().get(0).getVida() + " de vida "  ); 
-                    
+
                     if (familias.get(temporal).getFamilias().get(0).getVida() <= 0){
-                        
+
                         System.out.println("Ha ganado " + familias.get(0).getFamilias().get(0).getNombre());
                         familias.get(0).getFamilias().get(0).setVida(vidaR);
                         familias.get(temporal).getFamilias().remove(0);
-                        
+
+                        if (familias.get(temporal).getFamilias().isEmpty() == true){
+                            familias.isEmpty();
+                            break;
+                        }
+
                     }else{
+
+                    int ataqueContrincante = familias.get(temporal).getFamilias().get(0).damage(herrero);
+                    familias.get(0).getFamilias().get(0).setVida(familias.get(0).getFamilias().get(0).getVida() - ataqueContrincante);
+                    System.out.println( familias.get(temporal).getFamilias().get(0).getNombre() + " ha atacado a " + familias.get(0).getFamilias().get(0).getNombre() + " haciendole " + ataqueContrincante + " dejandolo con " + familias.get(0).getFamilias().get(0).getVida() + " de vida "  ); 
+
+                    if (familias.get(0).getFamilias().get(0).getVida() <= 0){
                         
-                        int ataqueContrincante = familias.get(temporal).getFamilias().get(0).damage(familias.get(0).getFamilias().get(0));
-                        familias.get(0).getFamilias().get(0).setVida(familias.get(0).getFamilias().get(0).getVida() - ataqueContrincante);
-                        System.out.println( familias.get(temporal).getFamilias().get(0).getNombre() + " ha atacado a " + familias.get(0).getFamilias().get(0).getNombre() + " haciendole " + ataqueContrincante + " dejandolo con " + familias.get(0).getFamilias().get(0).getVida() + " de vida "  ); 
+                        System.out.println("Ha ganado " + familias.get(temporal).getFamilias().get(0).getNombre());
+                        familias.get(temporal).getFamilias().get(0).setVida(vidaC);
+                        familias.get(0).getFamilias().remove(0);
                         
-                        if (familias.get(0).getFamilias().get(0).getVida() <= 0){
-                            System.out.println("Ha ganado " + familias.get(temporal).getFamilias().get(0).getNombre());
-                            familias.get(temporal).getFamilias().get(0).setVida(vidaC);
-                            familias.get(0).getFamilias().remove(0);
-                            
+                        if (familias.get(0).getFamilias().isEmpty() == true){
+                            familias.remove(0);
+                            break;
                         }
                     }
                 }
             }
+        }
+            
             
             if (familias.get(temporal).getFamilias().isEmpty()){
                 familias.remove(temporal);
@@ -245,4 +266,5 @@ public class Lab4P2_VictorValladares_121141026 {
             }
         }
     }
+    
 }

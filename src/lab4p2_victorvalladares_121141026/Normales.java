@@ -1,7 +1,7 @@
 package lab4p2_victorvalladares_121141026;
 
 public class Normales extends Personas{
-    private int ataque;
+    private int ataque = 50;
 
     public Normales() {
         super();
@@ -10,12 +10,6 @@ public class Normales extends Personas{
     public Normales(String nombre, String apellido, int edad, int vida) {
         super(nombre, apellido, edad, vida);
     }
-
-    public Normales(int ataque) {
-        this.ataque = 50;
-    }
-
-
 
     public int getAtaque() {
         return ataque;

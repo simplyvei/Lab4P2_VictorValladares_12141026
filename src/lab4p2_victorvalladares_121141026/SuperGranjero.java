@@ -1,7 +1,7 @@
 package lab4p2_victorvalladares_121141026;
 
 public class SuperGranjero extends Personas{
-    private int ataque;
+    private int ataque = 1000;
 
     public SuperGranjero() {
         super();
@@ -10,11 +10,6 @@ public class SuperGranjero extends Personas{
     public SuperGranjero(String nombre, String apellido, int edad, int vida) {
         super(nombre, apellido, edad, 1000);
     }
-
-    public SuperGranjero(int ataque) {
-        this.ataque = 1000;
-    }
-
     
     public int getAtaque() {
         return ataque;
